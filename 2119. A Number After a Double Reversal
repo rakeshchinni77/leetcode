@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int getReverse(int n) {
+        int rev=0;
+        while(n>0) {
+            int ld=n%10;
+            if(ld!=0 || rev>0) {
+                rev=rev*10+ld;
+            }
+            n=n/10;
+        }
+        return rev;
+    }
+    bool isSameAfterReversals(int num) {
+        int dup=num;
+        int firstResult = getReverse(num);
+        int finalResult = getReverse(firstResult);
+        if(finalResult==dup) {
+            return true;
+        }
+        return false;
+    }
+};
