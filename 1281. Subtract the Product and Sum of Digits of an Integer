@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        int psum=1,dsum=0;
+        while(n>0) {
+            int ld=n%10;
+            dsum+=ld;
+            psum*=ld;
+            n=n/10;
+        }
+        return psum-dsum;
+    }
+};
