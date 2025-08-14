@@ -1,0 +1,22 @@
+class Solution {
+    private:
+    string comp(string a, string b) {
+        string pre = "";
+        for(int i = 0; i < a.size() && i < b.size(); i++) {
+            if(a[i] != b[i]) break;
+            pre += a[i];
+        }
+        return pre;
+    }
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string pre = strs[0];
+
+        for(int i = 1; i < strs.size(); i++) {
+            if(pre.size() == 0) break;
+            pre = comp(pre, strs[i]);
+        }
+
+        return pre;
+    }
+};
