@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int getDigitSum(int n) {
+        int sum=0;
+        while(n>0) {
+            int ld=n%10;
+            sum+=ld*ld;
+            n=n/10;
+        }
+        return sum;
+    }
+    bool isHappy(int num) {
+       unordered_set<int>seen;
+       while(num!=1 && !seen.count(num)) {
+         seen.insert(num);
+         num=getDigitSum(num);
+       }
+       return num==1;
+    }
+};
