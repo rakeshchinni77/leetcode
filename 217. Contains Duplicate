@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> us;
+        for(int num:nums) {  
+            if(us.count(num)) { //ikkada first count check chesthundi if > 1 work
+                return true;
+            }
+            us.insert(num); // ikkada set loki elements pedattham 
+        }
+        return false;
+       
+    }
+};
