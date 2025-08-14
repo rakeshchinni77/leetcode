@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int addDigits(int num) {
+        if(num==0) return 0;
+        return 1+(num-1)%9; //digital_root(n) = 1 + (n - 1) % 9
+    }
+    
+};
+/*
+ int getDigitSum(int n) {
+        int sum=0;
+        while(n>0) {
+            int ld=n%10;
+            sum+=ld;
+            n=n/10;
+        }
+        return sum;
+    }
+    int addDigits(int num) {
+        while(num>9) {
+            num = getDigitSum(num);
+        }
+       return num; 
+    }
+    */
