@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+    int i = 0;  // Points to the position to write the next valid number
+    for (int j = 0; j < nums.size(); ++j) {
+        // Always allow the first two elements
+        if (i < 2 || nums[j] != nums[i - 2]) {
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return i; 
+    }
+};
