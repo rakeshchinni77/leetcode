@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        vector<int>conArr;
+        for(auto it : nums) {
+            conArr.emplace_back(it);
+        }
+        for(auto it : nums) {
+            conArr.emplace_back(it);
+        }
+        return conArr;
+    }
+};
