@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int reverse(int x) {
+        long res = 0;
+        int count = 0;
+        while(x!=0) {
+            int last = x%10;
+            if(last!=0) {
+                res = (res*10)+last;
+                count++;
+            }
+            else if(count) {
+                res = (res*10)+last;
+                count++;
+            }
+            if(res > INT_MAX || res < INT_MIN) return 0;
+            x/=10;
+        }
+        return res;
+    }
+};
