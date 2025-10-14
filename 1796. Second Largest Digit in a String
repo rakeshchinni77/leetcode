@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int secondHighest(string s) {
+        int l = 0;
+        int sl = 0;
+        for(int i=0;i<s.size();i++) {
+            if(!is_alpha(s[i])) {
+                if(s[i]>l) {
+                    l = s[i];
+                    sl = l;
+                }
+            }
+        }
+        return sl;
+    }
+};
