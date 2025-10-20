@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int smallestMissingMultiple(vector<int>& nums, int k) {
+        unordered_set<int> s(nums.begin(), nums.end());
+        long long m = 1;
+        while (true) {
+            long long candidate = m * k;
+            if (s.find(candidate) == s.end())
+                return candidate;
+            m++;
+        }
+    }
+};
