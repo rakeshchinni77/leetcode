@@ -4,7 +4,7 @@ public:
         if(n<=0) return false;
         int factors[] = {2,3,5};
         for(auto factor:factors) {
-            if(n%factor==0) {
+            while(n%factor==0) {
                 n/=factor;
             }
         }
