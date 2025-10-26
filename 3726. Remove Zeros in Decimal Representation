@@ -1,0 +1,15 @@
+class Solution {
+public:
+    long long removeZeros(long long n) {
+        if(n==1) return n;
+        string res = "";
+        string temp = to_string(n);
+        for(int i=0;i<temp.size();i++) {
+            if(temp[i]!='0') {
+                res+=temp[i];
+            }
+        }
+        long long ans = stoll(res);
+        return ans;
+    }
+};
