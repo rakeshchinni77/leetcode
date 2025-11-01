@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int maximumProduct(vector<int>& nums) {
+        long long firLar = INT_MIN, secLar = INT_MIN, thirLar = INT_MIN;
+        long long firSmall = INT_MAX, secSmall = INT_MAX;
+        for(auto num:nums) {
+            //for big
+            if(num > firLar) {
+                thirLar = secLar;
+                secLar  = firLar;
+                firLar = num;
+            }
+            else if(num > secLar && num>thirLar) {
+                thirLar = secLar;
+                secLar = num;
+            }
+            else if(num > thirLar) {
+                thirLar = num;
+            }
+            // for small
+            if(num < firSmall) {
+                secSmall = firSmall;
+                firSmall = num;
+            }
+            else if(num < secSmall) {
+                secSmall = num;
+            }
+        }
+        return max((firLar*secLar*thirLar),(firLar*firSmall*secSmall));
+    }
+};
