@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int firLar = 0, secLar = 0;
+        for(auto num:nums) {
+            if(num > firLar) {
+                secLar = firLar;
+                firLar = num;
+            }
+            else if(num > secLar) {
+                secLar = num;
+            }
+        }
+        return (firLar-1)*(secLar-1);
+    }
+};
