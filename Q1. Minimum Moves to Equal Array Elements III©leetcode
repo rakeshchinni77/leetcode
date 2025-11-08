@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int maxi = INT_MIN;
+        for(auto it:nums) {
+            if(it > maxi) {
+                maxi = it;
+            }
+        }
+        int moves = 0;
+        for(int n : nums) {
+            moves += (maxi - n);
+        }
+        return moves;
+    }
+};©leetcode
