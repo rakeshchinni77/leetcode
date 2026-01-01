@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        // string org = "";
+        // for(int i=0;i<s.size();i++) {
+        //     if(isalnum(s[i])) {
+        //         org.push_back(tolower(s[i]));
+        //     }
+        // }
+        // int low = 0,high = org.size()-1;
+        // while(low<high) {
+        //     if(org[low++]!=org[high--]) return false;
+        // }
+        // return true;
+        //optimize
+        int n = s.size();
+        int low = 0,high = n-1;
+        while(low<high) {
+            if(!isalnum(s[low])) {
+                low++;
+            }
+            else if(!isalnum(s[high])) {
+                high--;
+            }
+            else {
+                if(tolower(s[low++])!=tolower(s[high--])) return false;
+            }
+        }
+        return true;
+    }
+};
