@@ -1,3 +1,38 @@
+//brute
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> res;
+        string temp = "";
+        
+        for(auto ch : s) {
+            if(ch == ' ' && temp != "") {
+                res.emplace_back(temp);
+                temp = "";
+            }
+            else if(ch != ' ') {
+                temp += ch;
+            }
+        }
+
+        if(temp != "") {
+            res.emplace_back(temp);
+        }
+
+        reverse(res.begin(), res.end());
+
+        string result = "";
+        for(int i = 0; i < res.size(); i++) {
+            result += res[i];
+            if(i != res.size() - 1) {
+                result += " ";
+            }
+        }
+
+        return result;
+    }
+};
+//optimize
 class Solution {
 public:
     string reverseWords(string s) {
