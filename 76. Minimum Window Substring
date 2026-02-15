@@ -1,0 +1,33 @@
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        int n = s.size();
+        int m = t.size();
+        if(m>n) return "";
+        int st = 0, end = 0;
+        int stIdx = -1;
+        int minSub = INT_MAX;
+        int cnt = 0;
+        int hash[256] = {0};
+        for(int i=0;i<m;i++) {
+            hash[t[i]]++;
+        }
+        while(end < n) {
+            if(hash[s[end]] > 0) {
+                cnt++;
+            }
+            hash[s[end]]--;
+            while(cnt == m) {
+                if(end-st+1<minSub) {
+                    minSub = end-st+1;
+                    stIdx = st;
+                }
+                hash[s[st]]++;
+                if(hash[s[st]]>0) cnt -= 1;
+                st++;
+            }
+            end++;
+        }
+        return stIdx == -1?"":s.substr(stIdx,minSub);
+    }
+};
