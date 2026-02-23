@@ -1,4 +1,3 @@
-//middle of the linkedList
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
