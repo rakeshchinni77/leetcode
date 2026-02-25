@@ -1,0 +1,19 @@
+class Solution {
+public:
+    class help {
+        public:
+        bool operator()(int a,int b) {
+            int x = __builtin_popcount(a), y = __builtin_popcount(b);
+            if(x<y) return true;
+            else if(x==y) {
+                if(a<b) return true;
+                else return false;
+            }
+            return false;
+        }
+    };
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(), arr.end(), help());
+        return arr;
+    }
+};
