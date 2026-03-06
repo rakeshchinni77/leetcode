@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool checkOnesSegment(string s) {
+        bool check = true;
+        int n = s.size();
+        if(n==1) return true;
+        bool final = true;
+        
+        for(int i=0;i<n;i++){
+            if(s[i]=='1' && check){
+                check = true;
+            }
+            else if(s[i]=='0'){
+                check = false;
+            }
+            else {
+                final = false;
+            }
+        }
+        return final;
+    }
+};
