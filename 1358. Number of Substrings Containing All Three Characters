@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int cnt = 0;
+        int n = s.size();
+        int l=0;
+        int hash[3] = {0};
+        for(int r=0;r<n;r++) {
+            if(s[r]=='a') hash[0]++;
+            else if(s[r]=='b') hash[1]++;
+            else hash[2]++;
+            while(hash[0]&&hash[1]&&hash[2]){
+                cnt+=(n-r);
+                if(s[l]=='a') hash[0]--;
+                else if(s[l]=='b') hash[1]--;
+                else hash[2]--;
+                l++;
+            }
+        }
+        return cnt;
+    }
+};
