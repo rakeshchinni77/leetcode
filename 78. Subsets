@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<vector<int>> ans;
+    void help(int i,vector<int>&nums,vector<int>&arr,int n) {
+        if(i>=n) {
+            ans.push_back(arr);
+            return;
+        }
+        arr.push_back(nums[i]);
+        help(i+1,nums,arr,n);
+        arr.pop_back();
+        help(i+1,nums,arr,n);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n = nums.size();
+        vector<int>arr;
+        help(0,nums,arr,n);
+        return ans;
+    }
+};
