@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string mapWordWeights(vector<string>& words, vector<int>& weights) {
+        int n = words.size();
+        string res = "";
+        for(int i=0;i<n;i++)  {
+            int j=0;
+            int sum = 0;
+            while(j < words[i].size()) {
+                sum+=weights[words[i][j]-'a'];
+                j++;
+            }
+            int modulo = sum%26;
+            int getrev = (26-modulo-1);
+            res.push_back('a'+getrev);
+        }
+        return res;
+    }
+};
