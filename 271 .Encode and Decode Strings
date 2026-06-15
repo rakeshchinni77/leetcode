@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int>carry;
+    string encode(vector<string>& strs) {
+        if(strs.empty()) return "";
+        string encoded_string = "";
+        for(auto &it:strs) {
+            carry.push_back(it.size());
+            encoded_string+=it;
+        }
+        return encoded_string;
+    }
+
+    vector<string> decode(string s) {
+        if(carry.empty()) return {};
+        vector<string> decoded_strs;
+        int n = s.size();
+        int idx = 0;
+        for(int i=0; i<n || idx < carry.size(); ) {
+            int curr = carry[idx];
+            decoded_strs.push_back(s.substr(i, curr));
+            i += curr;
+            idx++;
+        }
+        return decoded_strs;
+    }
+};
