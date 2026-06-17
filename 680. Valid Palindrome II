@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool ispalin(string s,int l,int h) {
+        while(l<h) {
+            if(s[l++]!=s[h--]) return false;
+        }
+        return true;
+    }
+    bool validPalindrome(string s) {
+        int l = 0,h = s.size()-1;
+        while(l<h) {
+            if(s[l]!=s[h]) {
+                return ispalin(s,l,h-1) || ispalin(s,l+1,h);
+            }
+            l++;
+            h--;
+        }
+        return true;
+    }
+};
