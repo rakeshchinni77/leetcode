@@ -1,21 +1,13 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-      auto it = unique(nums.begin(),nums.end());//in this unique is used to move the dup,give last distance 
-      return distance(nums.begin(),it);// calculate distance
-    } 
-};
-/** brute force 
-if (nums.empty()) return 0;
-
-    int i = 0; // Points to last unique element
-    for (int j = 1; j < nums.size(); ++j) {
-        if (nums[j] != nums[i]) {
-            i++;               // Move to next unique position
-            nums[i] = nums[j]; // Overwrite duplicate
+        int n = nums.size();
+        int i=0,j=0;
+        while(j<n) {
+            nums[i] = nums[j];
+            while(j<n && nums[i] == nums[j]) j++;
+            i++;
         }
+        return i;
     }
-
-    return i + 1;
-    } 
-**/
+};
