@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void to_sort(vector<int>& costs, int coins) {
+        int maxi = *max_element(costs.begin(),costs.end());
+        vector<int>count(maxi+1,0);
+        for(auto it:costs){
+            count[it]++;
+        }
+        int idx = 0;
+        for(int i=1;i<count.size();i++) {
+            while(count[i]--) {
+                costs[idx++] = i;
+            }
+        }
+    }
+    int maxIceCream(vector<int>& costs, int coins) {
+        int n = costs.size();
+        //counting sort
+        to_sort(costs,coins);
+        int ans = 0;
+        int currSum = 0;
+        for(auto it:costs) {
+            if(currSum+it>coins) break;
+            currSum+=it;
+            ans++;
+        }
+        return ans;
+    }
+};
