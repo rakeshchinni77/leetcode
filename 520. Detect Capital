@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int res = 0;
+        int n = word.size();
+        for(auto it:word) {
+            if(isupper(it)) res+=1;
+        }
+        if(res == n) return true;
+        else if(res == 0) return true;
+        else if(res == 1 && isupper(word[0])) return true;
+        return false;
+    }
+};
