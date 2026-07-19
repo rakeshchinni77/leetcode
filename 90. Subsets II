@@ -1,0 +1,19 @@
+class Solution {
+public:
+    void help(vector<int>& nums,vector<vector<int>>& res,vector<int>& ds,int idx) {
+        res.push_back(ds);
+        for(int i=idx;i<nums.size();i++) {
+            if(i!=idx && nums[i]==nums[i-1]) continue;
+            ds.push_back(nums[i]);
+            help(nums,res,ds,i+1);
+            ds.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>>res;
+        vector<int>ds;
+        sort(nums.begin(),nums.end());
+        help(nums,res,ds,0);
+        return res;
+    }
+};
