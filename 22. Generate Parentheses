@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void help(int o,int c,int n,string &ds,vector<string>&res) {
+        if(o == n && c == n) {
+            res.push_back(ds);
+            return;
+        }
+        if(o<n) {
+           ds.push_back('(');
+           help(o+1,c,n,ds,res);
+           ds.pop_back();
+        }
+        if(c<o) {
+            ds.push_back(')');
+            help(o,c+1,n,ds,res);
+            ds.pop_back();
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string>res;
+        string ds = "";
+        help(0,0,n,ds,res);
+        return res;
+    }
+};
+// here we followed two conditions are open < n and close < open
