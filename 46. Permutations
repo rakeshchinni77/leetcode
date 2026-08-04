@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void help(vector<int>& nums,vector<int>&ds,int mpp[],vector<vector<int>>&res) {
+        if(ds.size()==nums.size()) {
+            res.push_back(ds);
+            return;
+        }
+        for(int i=0;i<nums.size();i++) {
+            if(!mpp[i]) {
+                mpp[i] = 1;
+                ds.push_back(nums[i]);
+                help(nums,ds,mpp,res);
+                ds.pop_back();
+                mpp[i] = 0;
+            }
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int>ds;
+        int freq[nums.size()];
+        vector<vector<int>>res;
+        for(int i=0;i<nums.size();i++) freq[i] = 0;
+        help(nums,ds,freq,res);
+        return res;
+    }
+};
